@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnakeGameByAlejandro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="game.css">
+    <a href="https://bit.ly/4f063Pd"></a>
+    <style>
+        #pauseButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #pauseMenu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <button class="pausar-button" id="pauseButton">Pausar</button>
+    <div id="pauseMenu">
+        <h2>Juego Pausado</h2>
+        <button id="resumeButton">Reanudar</button>
+    </div>
+
+    <script>
+        let isPaused = false;
+        let gameInterval;
+
+        document.getElementById('pauseButton').addEventListener('click', function() {
+            isPaused = !isPaused;
+            this.textContent = isPaused ? 'Reanudar' : 'Pausar';
+            document.getElementById('pauseMenu').style.display = isPaused ? 'block' : 'none';
+            console.log(isPaused ? 'Juego pausado' : 'Juego reanudado');
+        });
+
+        document.getElementById('resumeButton').addEventListener('click', function() {
+            isPaused = false;
+            document.getElementById('pauseButton').textContent = 'Pausar';
+            document.getElementById('pauseMenu').style.display = 'none';
+            console.log('Juego reanudado');
+        });
+
+        startGame(); // Inicia el juego
+    </script>
+
+  
+
+<div class="caja" id="caja"></div>
+    <header>
+        <p>Puntaje: <span id="current-score"></span></p>
+        <p>Record: <span id="best-score"></span></p>
+    </header>
+
+      <div id="container"></div>
+      <button class="regresar-button" onclick="window.history.back()">Regresar</button>
+
+      <div class="play-board"></div>
+
+      <div class="controls">
+        <i data-key="ArrowLeft" class="fa-solid fa-arrow-left-long"></i>
+        <i data-key="ArrowUp" class="fa-solid fa-arrow-up-long"></i>
+        <i data-key="ArrowRight" class="fa-solid fa-arrow-right-long"></i>
+        <i data-key="ArrowDown" class="fa-solid fa-arrow-down-long"></i>
+      </div>
+
+      </div>
+</body>
+<script src="game.js"></script>
+</html>
